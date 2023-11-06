@@ -6,7 +6,28 @@ import ReactDOM from "react-dom";
 import "../styles/index.css";
 
 //import your own components
-import Home from "./component/home.jsx";
+import SecondsCounter from "./component/home.jsx";
 
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+let counter = 0;
+setInterval(() => {
+  const sixthDigit = Math.floor(counter / 100000);
+  const fifthDigit = Math.floor(counter / 10000);
+  const fourthDigit = Math.floor(counter / 1000);
+  const thirdDigit = Math.floor(counter / 100);
+  const secondDigit = Math.floor(counter / 10);
+  const firstDigit = Math.floor(counter / 1);
+  counter++;
+
+  //render your react application
+  ReactDOM.render(
+    <SecondsCounter
+      firstCounter={firstDigit}
+      secondCounter={secondDigit}
+      thirdCounter={thirdDigit}
+      fourthCounter={fourthDigit}
+      fifthCounter={fifthDigit}
+      sixthCounter={sixthDigit}
+    />,
+    document.querySelector("#app")
+  );
+}, 1000);
